@@ -7,8 +7,7 @@
 <p align="center">
 自由自在地探索、随时随地的涩涩。
 </p>
-
-![头图](assets/headimage.png)
+<div align=center><img src="assets/headimage.png#pic_center"></div>
 
 ## 开源条款 / License 
 We use GPL-v4 LICENSE.  
