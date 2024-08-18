@@ -10,7 +10,7 @@
 <div align=center><img src="assets/headimage.png#pic_center"></div>
 
 ## 开源条款 / License 
-We use GPL-v4 LICENSE.  
+We use GPL-v3 LICENSE.  
 You MUST know that before your second-development.  
 As you start your usement and your development, we will see you as you agree with this LICENSE.
 
