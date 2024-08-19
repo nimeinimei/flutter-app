@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:web/pages/profilepage.dart';
 import 'package:web/pages/timemanagerpage.dart';
@@ -19,12 +21,14 @@ class _tHomePage extends State<tHomePage> {
           leading: IconButton(
             icon: Icon(Icons.person_2),
             onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (_) => tTimeManagerPage())),
+                context, MaterialPageRoute(builder: (_) => tProfilePage())),
           )),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Row(
               children: [
                 SizedBox(
@@ -69,37 +73,41 @@ class _tHomePage extends State<tHomePage> {
               padding: EdgeInsets.all(8),
               mainAxisSpacing: 8.0,
               crossAxisSpacing: 8.0,
+              childAspectRatio: 1.3,
               children: List.generate(
-                3,
-                (index) {
-                  return Card(
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          child: Image.network(
-                            'https://mooc-image.nosdn.127.net/822c8b2cc8cd42db848639321d8194c7.jpg',
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Row(
+                tHomepageContentList.length,
+                (i) {
+                  _tHomepageContentList tItem = tHomepageContentList[i];
+                  return InkWell(
+                    onTap: () => Navigator.push(
+                context, MaterialPageRoute(builder: (_) => tItem.page)),
+                    child: Card(
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
+                            Icon(tItem.icon),
+                            SizedBox(
+                              width: 10,
+                            ),
                             Expanded(
                               child: Column(
-                                  children: [Text('Title'), Text('Subtitle')]),
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(tItem.title,style: Theme.of(context).textTheme.titleMedium,),
+                                  Text(tItem.subtitle,style: Theme.of(context).textTheme.bodySmall),
+                                ],
+                              ),
                             ),
-                            IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.arrow_forward))
                           ],
-                        )
-                      ],
+                        ),
+                      ),
+                      elevation: 0.5,
+                      margin: EdgeInsets.all(10),
                     ),
-                    elevation: 0,
-                    margin: EdgeInsets.all(10),
                   );
                 },
               ),
@@ -110,3 +118,29 @@ class _tHomePage extends State<tHomePage> {
     );
   }
 }
+
+class _tHomepageContentList {
+  late StatefulWidget page;
+  late IconData icon;
+  late String title;
+  late String subtitle;
+
+  _tHomepageContentList(
+      {required this.page,
+      required this.icon,
+      required this.title,
+      required this.subtitle});
+}
+
+List<_tHomepageContentList> tHomepageContentList = [
+  _tHomepageContentList(
+      page: tTimeManagerPage(),
+      icon: Icons.lock_clock_outlined,
+      title: "时间规划",
+      subtitle: "锁上你的废物唧唧~"),
+  _tHomepageContentList(
+      page: tTaskManagerPage(),
+      icon: Icons.task_alt_rounded,
+      title: "任务管理",
+      subtitle: "我是驱魔师，这就是神魔"),
+];
