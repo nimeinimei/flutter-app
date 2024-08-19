@@ -25,6 +25,7 @@ class _tHomePage extends State<tHomePage> {
           )),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
               height: 10,
@@ -66,50 +67,89 @@ class _tHomePage extends State<tHomePage> {
                 ),
               ],
             ),
-            GridView.count(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
-              padding: EdgeInsets.all(8),
-              mainAxisSpacing: 8.0,
-              crossAxisSpacing: 8.0,
-              childAspectRatio: 1.3,
-              children: List.generate(
-                tHomepageContentList.length,
-                (i) {
+            Padding(
+              padding: EdgeInsets.fromLTRB(20, 10, 20, 5),
+              child: Divider(
+                height: 2,
+              ),
+            ),
+            // Wrap(
+            //   alignment: WrapAlignment.start,
+            //   runAlignment: WrapAlignment.start,
+            //   crossAxisAlignment: WrapCrossAlignment.center,
+            //   spacing: 8,
+            //   runSpacing: 4,
+            //   // crossAxisCount: 2,
+
+            //   children: List.generate(
+            //     tHomepageContentList.length,
+            //     (i) {
+            //       _tHomepageContentList tItem = tHomepageContentList[i];
+            //       return InkWell(
+            //         onTap: () => Navigator.push(
+            //             context, MaterialPageRoute(builder: (_) => tItem.page)),
+            //         child: Card(
+            //           clipBehavior: Clip.antiAliasWithSaveLayer,
+            //           child: Padding(
+            //             padding: EdgeInsets.all(20),
+            //             child: Row(
+            //               mainAxisSize: MainAxisSize.min,
+            //               crossAxisAlignment: CrossAxisAlignment.center,
+            //               children: [
+            //                 Icon(tItem.icon),
+            //                 SizedBox(
+            //                   width: 10,
+            //                 ),
+            //                 Column(
+            //                   crossAxisAlignment: CrossAxisAlignment.start,
+            //                   mainAxisAlignment: MainAxisAlignment.center,
+            //                   children: [
+            //                     Text(
+            //                       tItem.title,
+            //                       style:
+            //                           Theme.of(context).textTheme.titleMedium,
+            //                     ),
+            //                     Text(tItem.subtitle,
+            //                         style:
+            //                             Theme.of(context).textTheme.bodySmall),
+            //                   ],
+            //                 ),
+            //               ],
+            //             ),
+            //           ),
+            //           elevation: 0.5,
+            //           margin: EdgeInsets.all(10),
+            //         ),
+            //       );
+            //       // return ListTile(
+            //       //   leading: Icon(Icons.abc),
+            //       //   title: Text("123"),
+            //       //   subtitle: Text("123"),
+            //       // );
+            //     },
+            //   ),
+            // ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+              child: Text(
+                "来看看有什么功能吧~",
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+              child: Column(
+                children: List.generate(tHomepageContentList.length, (i) {
                   _tHomepageContentList tItem = tHomepageContentList[i];
-                  return InkWell(
+                  return ListTile(
                     onTap: () => Navigator.push(
-                context, MaterialPageRoute(builder: (_) => tItem.page)),
-                    child: Card(
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      child: Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(tItem.icon),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(tItem.title,style: Theme.of(context).textTheme.titleMedium,),
-                                  Text(tItem.subtitle,style: Theme.of(context).textTheme.bodySmall),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      elevation: 0.5,
-                      margin: EdgeInsets.all(10),
-                    ),
+                        context, MaterialPageRoute(builder: (_) => tItem.page)),
+                    leading: Icon(tItem.icon),
+                    title: Text(tItem.title),
+                    subtitle: Text(tItem.subtitle),
+                    trailing: Icon(Icons.arrow_forward_rounded),
                   );
-                },
+                }),
               ),
             ),
           ],

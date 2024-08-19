@@ -7,6 +7,7 @@ class tTaskManagerPage extends StatefulWidget {
 }
 
 class _tTaskManagerPage extends State<tTaskManagerPage> {
+  List<String> toylist = ["锁", "塞子", "郊狼", "假体", "其他"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +38,48 @@ class _tTaskManagerPage extends State<tTaskManagerPage> {
             IconButton(
               tooltip: "筛选",
               icon: const Icon(Icons.rule),
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet(
+                  isScrollControlled: true,
+                  showDragHandle: true,
+                  context: context,
+                  builder: (context) {
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 20),
+                          child: Text(
+                            "筛选任务标签：",
+                            style: Theme.of(context).textTheme.titleSmall,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(20),
+                          child: Wrap(
+                            alignment: WrapAlignment.start,
+                            runAlignment: WrapAlignment.start,
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            spacing: 8,
+                            runSpacing: 4,
+                            children: toylist.map((toy) {
+                              return ChoiceChip(
+                                onSelected: (bool selected) {},
+                                selected: false,
+                                avatar: CircleAvatar(
+                                  backgroundColor: Colors.green.shade200,
+                                ),
+                                label: Text(toy),
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
             ),
             IconButton(
               tooltip: '收藏',
