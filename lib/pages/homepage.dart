@@ -4,6 +4,7 @@ import 'package:web/pages/profilepage.dart';
 import 'package:web/pages/randomchoicepage.dart';
 import 'package:web/pages/timemanagerpage.dart';
 import 'package:web/pages/taskmanagerpage.dart';
+import 'package:web/telegram/profile.dart';
 
 class tHomePage extends StatefulWidget {
   const tHomePage({super.key});
@@ -152,6 +153,7 @@ class _tHomePage extends State<tHomePage> {
                 }),
               ),
             ),
+            ProfileGetWebview(),
           ],
         ),
       ),
