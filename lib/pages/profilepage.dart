@@ -37,7 +37,7 @@ class _tProfilePage extends State<tProfilePage> {
                   child: Divider(thickness: 3),
                 ),
               ]),
-              ProfilePageContext()
+              ProfilePageContext(),
             ],
           ),
         ),

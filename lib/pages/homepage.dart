@@ -1,7 +1,9 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:web/pages/explorepage.dart';
 import 'package:web/pages/profilepage.dart';
+import 'package:web/pages/randomchoicepage.dart';
 import 'package:web/pages/timemanagerpage.dart';
 import 'package:web/pages/taskmanagerpage.dart';
 
@@ -183,4 +185,14 @@ List<_tHomepageContentList> tHomepageContentList = [
       icon: Icons.task_alt_rounded,
       title: "任务管理",
       subtitle: "我是驱魔师，这就是神魔"),
+  _tHomepageContentList(
+      page: tExplorePage(),
+      icon: Icons.travel_explore_outlined,
+      title: "探索森林",
+      subtitle: "前进，不择手段地前进！"),
+  _tHomepageContentList(
+      page: tRandomChoicePage(),
+      icon: Icons.casino_outlined,
+      title: "随机选择",
+      subtitle: "看看谁的运气最好呢")
 ];
