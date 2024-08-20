@@ -10,37 +10,37 @@ class ProfileGetWebview extends StatefulWidget {
 
 class _ProfileGetWebview extends State<ProfileGetWebview> {
   // Telegram.WebApp.
+  String? username;
   late WebViewController controller;
   @override
   void initState() {
-    // 2
     controller = WebViewController()
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..loadRequest(Uri.parse('https://www.csdn.net/'));
+      ..setJavaScriptMode(JavaScriptMode.unrestricted);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    var username;
+   
     return Column(
       children: [
         WebViewWidget(controller: controller),
         IconButton(
-          onPressed: () {
-            setState(() async {
-              username = await controller.runJavaScriptReturningResult("""
+          onPressed: () async {
+            String? result = (await controller.runJavaScriptReturningResult("""
 Telegram.WebApp.requestAuthentication();
 
 Telegram.WebApp.onAuthenticationRequestFinished = function (user) {
   const userInfo = JSON.stringify(user);
   window.postMessage(userInfo, '*');
-};""");
+};""")) as String?;
+            setState(() {
+              username = result;
             });
           },
           icon: Icon(Icons.fact_check_rounded),
         ),
-        Text(username),
+        Text(username ?? "Waiting..."),
       ],
     );
   }
