@@ -18,7 +18,7 @@ class _tTimeManagerPage extends State<tTimeManagerPage> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(10, 2, 10, 2),
+        padding: const EdgeInsets.fromLTRB(20, 2, 20, 2),
         child: Center(
           child: Expanded(
             child: Column(
