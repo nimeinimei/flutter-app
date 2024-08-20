@@ -5,6 +5,8 @@ class tProfilePage extends StatefulWidget {
   State<StatefulWidget> createState() => _tProfilePage();
 }
 
+enum Menu { preview, share, getLink, remove, download }
+
 class _tProfilePage extends State<tProfilePage> {
   @override
   Widget build(BuildContext context) {
@@ -14,6 +16,32 @@ class _tProfilePage extends State<tProfilePage> {
             onPressed: () => Navigator.pop(context),
             icon: const Icon(Icons.arrow_back_rounded)),
         title: const Text("信息 | Profile"),
+        actions: <Widget>[
+          PopupMenuButton(
+            icon: Icon(Icons.more_vert_outlined),
+            tooltip: "更多选项",
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<Widget>>[
+              PopupMenuItem(
+                child: ListTile(
+                  leading: Icon(Icons.flag_outlined),
+                  title: Text("问题反馈"),
+                ),
+              ),
+              PopupMenuItem(
+                child: ListTile(
+                  leading: Icon(Icons.coffee),
+                  title: Text("捐赠"),
+                ),
+              ),
+              PopupMenuItem(
+                child: ListTile(
+                  leading: Icon(Icons.info_outline),
+                  title: Text("关于我们"),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
       body: Center(
         child: Padding(
