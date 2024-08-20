@@ -46,6 +46,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
+  msix: ^3.16.8
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -88,3 +89,11 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+msix_config:
+  display_name: 涩之律者的秘密小屋
+  publisher_display_name: 项目组
+  identity_name: herrscher.thelema.flutter
+  msix_version: 0.0.1.0
+  # logo_path: C:\path\to\logo.png
+  capabilities: internetClient, location, microphone, webcam
